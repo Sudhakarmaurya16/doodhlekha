@@ -16,8 +16,6 @@
 .bill-action-bar {
   width: min(1100px, 100%);
   margin: 0 auto 18px;
-  display: flex;
-  justify-content: space-between;
   align-items: center;
   gap: 12px;
 }

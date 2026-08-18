@@ -15,7 +15,7 @@ import {
   X,
 } from "lucide-react";
 
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 import api from "../../services/api";
 
@@ -75,6 +75,7 @@ const getMethodName = (method) => {
 
 const CustomerPayment = () => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const { id, customerId } = useParams();
 
@@ -121,17 +122,57 @@ const CustomerPayment = () => {
   ======================================================= */
 
   const loadCustomer = async () => {
+    if (!selectedCustomerId) return null;
+
+    const stateCustomer = location.state?.customer;
+    if (
+      stateCustomer &&
+      String(stateCustomer?._id) === String(selectedCustomerId)
+    ) {
+      setCustomer(stateCustomer);
+      return stateCustomer;
+    }
+
     try {
       const response = await api.get(`/customers/${selectedCustomerId}`);
+      const payload = response?.data;
+      const found =
+        payload?.data ||
+        payload?.customer ||
+        payload?.result ||
+        (payload?._id || payload?.id ? payload : null);
 
-      setCustomer(
-        response.data?.data || response.data?.customer || response.data,
-      );
+      if (found) {
+        setCustomer(found);
+        return found;
+      }
     } catch (error) {
-      console.error("Customer Load Error:", error);
+      console.warn("Single Customer API Error:", error?.response?.status);
     }
-  };
 
+    const response = await api.get("/customers");
+    const payload = response?.data || {};
+    const customers = Array.isArray(payload?.data)
+      ? payload.data
+      : Array.isArray(payload?.customers)
+        ? payload.customers
+        : Array.isArray(payload?.result)
+          ? payload.result
+          : Array.isArray(payload)
+            ? payload
+            : [];
+
+    const foundCustomer = customers.find(
+      (item) => String(item?._id || item?.id) === String(selectedCustomerId),
+    );
+
+    if (!foundCustomer) {
+      throw new Error("Customer record नहीं मिला।");
+    }
+
+    setCustomer(foundCustomer);
+    return foundCustomer;
+  };
   /* =======================================================
      LOAD SUMMARY
   ======================================================= */
@@ -147,7 +188,14 @@ const CustomerPayment = () => {
         },
       );
 
-      setSummary(response.data?.data || null);
+      const payload = response?.data || {};
+      setSummary(
+        payload?.data?.summary ||
+          payload?.summary ||
+          payload?.data ||
+          payload ||
+          null,
+      );
     } catch (error) {
       console.error("Customer Summary Error:", error);
     }
@@ -168,7 +216,16 @@ const CustomerPayment = () => {
         },
       );
 
-      setPayments(response.data?.data || []);
+      const payload = response?.data || {};
+      const list = Array.isArray(payload?.data)
+        ? payload.data
+        : Array.isArray(payload?.payments)
+          ? payload.payments
+          : Array.isArray(payload?.data?.payments)
+            ? payload.data.payments
+            : [];
+
+      setPayments(list);
     } catch (error) {
       console.error("Payment History Error:", error);
 
@@ -200,7 +257,9 @@ const CustomerPayment = () => {
      SUMMARY VALUES
   ======================================================= */
 
-  const totalAmount = Number(summary?.summary?.totalAmount || 0);
+  const totalAmount = Number(
+    summary?.totalAmount || summary?.summary?.totalAmount || 0,
+  );
 
   /* =======================================================
      PAYMENT HISTORY TOTAL
@@ -286,17 +345,6 @@ const CustomerPayment = () => {
       setMessage({
         type: "error",
         text: "कृपया सही payment amount डालें।",
-      });
-
-      return;
-    }
-
-    if (pendingAmount > 0 && amount > pendingAmount) {
-      setMessage({
-        type: "error",
-        text: `Pending amount ₹${formatMoney(
-          pendingAmount,
-        )} है। इससे ज्यादा payment दर्ज नहीं कर सकते।`,
       });
 
       return;
@@ -863,7 +911,6 @@ const CustomerPayment = () => {
                     placeholder="0"
                     min="0.01"
                     step="0.01"
-                    max={pendingAmount || undefined}
                     required
                     autoFocus
                   />
