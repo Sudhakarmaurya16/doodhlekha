@@ -37,11 +37,36 @@ connectDB();
 // CORS
 // =====================================================
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://doodhlekha.onrender.com",
+];
+
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: (origin, callback) => {
+      // Allow requests without Origin
+      // e.g. Postman / server-to-server
+      if (!origin) {
+        return callback(null, true);
+      }
+
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      console.warn("CORS blocked origin:", origin);
+
+      return callback(
+        new Error(`CORS not allowed for origin: ${origin}`),
+        false,
+      );
+    },
+
     credentials: true,
+
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+
     allowedHeaders: ["Content-Type", "Authorization"],
   }),
 );
@@ -51,7 +76,12 @@ app.use(
 // =====================================================
 
 app.use(express.json({ limit: "10mb" }));
-app.use(express.urlencoded({ extended: true }));
+
+app.use(
+  express.urlencoded({
+    extended: true,
+  }),
+);
 
 // =====================================================
 // ROOT
@@ -122,7 +152,7 @@ const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
   console.log("==========================================");
-  console.log(`DOODHLEKHA SERVER RUNNING`);
+  console.log("DOODHLEKHA SERVER RUNNING");
   console.log(`PORT: ${PORT}`);
   console.log(`API: http://localhost:${PORT}/api`);
   console.log("==========================================");
