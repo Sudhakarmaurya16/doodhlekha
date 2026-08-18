@@ -1,0 +1,227 @@
+.milk-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  z-index: 2000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.milk-modal {
+  width: min(650px, 100%);
+  max-height: 92vh;
+  overflow-y: auto;
+  background: white;
+  border-radius: 18px;
+}
+
+.milk-modal-header {
+  padding: 22px;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+}
+
+.milk-modal-header h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.milk-modal-header p {
+  margin: 5px 0 0;
+  color: #9ca3af;
+  font-size: 11px;
+}
+
+.milk-close-btn {
+  border: none;
+  background: #f3f4f6;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.milk-form-section {
+  padding: 22px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.milk-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.milk-field label {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.milk-field label span {
+  color: #9ca3af;
+  font-weight: 400;
+}
+
+.milk-field input,
+.milk-field select,
+.milk-field textarea {
+  border: 1px solid #d1d5db;
+  border-radius: 9px;
+  padding: 11px;
+  outline: none;
+}
+
+.milk-field input:focus,
+.milk-field select:focus,
+.milk-field textarea:focus {
+  border-color: #16a34a;
+}
+
+.warning-text {
+  color: #dc2626;
+  font-size: 10px;
+}
+
+.milk-session-box {
+  margin: 0 22px 15px;
+  padding: 18px;
+  border: 1px solid #fde68a;
+  background: #fffbeb;
+  border-radius: 12px;
+}
+
+.milk-session-box.evening {
+  border-color: #ddd6fe;
+  background: #f5f3ff;
+}
+
+.session-heading {
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.milk-input-wrapper {
+  display: flex;
+  align-items: center;
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 9px;
+  overflow: hidden;
+}
+
+.milk-input-wrapper input {
+  flex: 1;
+  border: none;
+  padding: 13px;
+  outline: none;
+  font-size: 18px;
+}
+
+.milk-input-wrapper span {
+  padding: 0 12px;
+  color: #6b7280;
+  font-size: 11px;
+}
+
+.milk-session-box > small {
+  display: block;
+  margin-top: 7px;
+  color: #9ca3af;
+  font-size: 10px;
+}
+
+.milk-total-box {
+  margin: 20px 22px;
+  padding: 18px;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.milk-total-box span {
+  display: block;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.milk-total-box small {
+  display: block;
+  color: #6b7280;
+  font-size: 10px;
+}
+
+.milk-total-box strong {
+  color: #15803d;
+  font-size: 25px;
+}
+
+.notes-field {
+  padding: 0 22px 22px;
+}
+
+.milk-form-actions {
+  padding: 17px 22px;
+  background: #f8fafc;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.milk-cancel-btn,
+.milk-save-btn {
+  border: none;
+  padding: 11px 17px;
+  border-radius: 9px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.milk-cancel-btn {
+  background: white;
+  border: 1px solid #d1d5db;
+}
+
+.milk-save-btn {
+  background: #16a34a;
+  color: white;
+}
+
+.milk-save-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+  .milk-modal-overlay {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  .milk-modal {
+    max-height: 96vh;
+    border-radius: 18px 18px 0 0;
+  }
+
+  .milk-form-section {
+    grid-template-columns: 1fr;
+  }
+
+  .milk-form-actions {
+    flex-direction: column-reverse;
+  }
+
+  .milk-cancel-btn,
+  .milk-save-btn {
+    width: 100%;
+  }
+}

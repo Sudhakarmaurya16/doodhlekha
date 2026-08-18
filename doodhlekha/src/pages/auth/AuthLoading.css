@@ -1,0 +1,185 @@
+/* =====================================================
+   AUTH LOADING SCREEN
+===================================================== */
+
+.auth-loading-screen {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(22, 163, 74, 0.12),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(34, 197, 94, 0.1),
+      transparent 35%
+    ),
+    #f7faf8;
+
+  box-sizing: border-box;
+}
+
+/* =====================================================
+   CARD
+===================================================== */
+
+.auth-loading-card {
+  width: min(420px, 100%);
+  padding: 40px 30px;
+
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(22, 163, 74, 0.12);
+  border-radius: 24px;
+
+  text-align: center;
+
+  box-shadow:
+    0 25px 60px rgba(15, 23, 42, 0.1),
+    0 8px 25px rgba(22, 163, 74, 0.06);
+
+  animation: authCardIn 0.45s ease;
+}
+
+/* =====================================================
+   ICON
+===================================================== */
+
+.auth-loading-icon {
+  width: 74px;
+  height: 74px;
+
+  margin: 0 auto 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 22px;
+
+  background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+
+  font-size: 38px;
+
+  box-shadow: 0 12px 30px rgba(22, 163, 74, 0.12);
+}
+
+/* =====================================================
+   SPINNER
+===================================================== */
+
+.auth-spinner {
+  width: 34px;
+  height: 34px;
+
+  margin: 0 auto 22px;
+
+  border: 4px solid #dcfce7;
+  border-top-color: #16a34a;
+
+  border-radius: 50%;
+
+  animation: authSpin 0.8s linear infinite;
+}
+
+/* =====================================================
+   TEXT
+===================================================== */
+
+.auth-loading-card h2 {
+  margin: 0;
+
+  color: #14532d;
+
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.auth-loading-card p {
+  margin: 10px 0 4px;
+
+  color: #334155;
+
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.auth-loading-card small {
+  color: #94a3b8;
+
+  font-size: 12px;
+}
+
+/* =====================================================
+   ANIMATION
+===================================================== */
+
+@keyframes authSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes authCardIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+  .auth-loading-screen {
+    padding: 16px;
+  }
+
+  .auth-loading-card {
+    padding: 32px 22px;
+    border-radius: 20px;
+  }
+
+  .auth-loading-icon {
+    width: 64px;
+    height: 64px;
+    font-size: 32px;
+  }
+
+  .auth-loading-card h2 {
+    font-size: 20px;
+  }
+
+  .auth-loading-card p {
+    font-size: 14px;
+  }
+}
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 380px) {
+  .auth-loading-card {
+    padding: 28px 18px;
+  }
+
+  .auth-loading-icon {
+    width: 58px;
+    height: 58px;
+    font-size: 28px;
+  }
+}

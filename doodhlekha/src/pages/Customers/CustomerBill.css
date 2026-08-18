@@ -1,0 +1,899 @@
+/* =========================================================
+   DOODHLEKHA - CUSTOMER BILL
+   SHOP / DAIRY BILL STYLE
+   Responsive: Mobile + Tablet + Desktop + A4 Print
+========================================================= */
+
+.customer-bill-page {
+  min-height: 100vh;
+  padding: 24px;
+  background: #f4f7f8;
+  color: #17212b;
+  font-family: Arial, "Noto Sans Devanagari", "Nirmala UI", sans-serif;
+  box-sizing: border-box;
+}
+
+.bill-action-bar {
+  width: min(1100px, 100%);
+  margin: 0 auto 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.bill-action-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bill-back-btn,
+.bill-ledger-btn,
+.bill-print-btn,
+.bill-month-btn {
+  min-height: 42px;
+  border: 1px solid #d5e0e6;
+  border-radius: 8px;
+  background: #fff;
+  color: #173047;
+  padding: 0 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.bill-month-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.bill-month-btn input {
+  border: 0;
+  outline: 0;
+  font: inherit;
+  color: inherit;
+  background: transparent;
+}
+
+.bill-print-btn {
+  background: #009b52;
+  border-color: #009b52;
+  color: #fff;
+}
+
+.customer-bill-paper {
+  width: min(1100px, 100%);
+  margin: 0 auto;
+  padding: 30px;
+  background: #fff;
+  border: 1px solid #d8e1e6;
+  box-sizing: border-box;
+  box-shadow: 0 12px 35px rgba(24, 45, 60, 0.08);
+}
+
+/* Header */
+
+.shop-bill-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid #1a9b58;
+}
+
+.shop-bill-header h1 {
+  margin: 0;
+  font-size: 25px;
+  letter-spacing: 1px;
+  color: #123047;
+}
+
+.shop-bill-header p {
+  margin: 3px 0 0;
+  font-size: 10px;
+  font-weight: 700;
+  color: #74838d;
+  letter-spacing: 0.7px;
+}
+
+.shop-bill-title {
+  text-align: right;
+}
+
+.shop-bill-title strong {
+  display: block;
+  font-size: 20px;
+  color: #123047;
+}
+
+.shop-bill-title span {
+  display: block;
+  margin-top: 4px;
+  font-size: 11px;
+  color: #647783;
+}
+
+/* Customer */
+
+.shop-customer-strip {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1.2fr 0.9fr 0.9fr 1fr;
+  border: 1px solid #d5dfe5;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.shop-customer-strip > div {
+  padding: 9px 10px;
+  border-right: 1px solid #dce5e9;
+}
+
+.shop-customer-strip > div:last-child {
+  border-right: 0;
+}
+
+.shop-customer-strip span {
+  display: block;
+  font-size: 9px;
+  color: #758590;
+  margin-bottom: 4px;
+}
+
+.shop-customer-strip strong {
+  display: block;
+  font-size: 11px;
+  color: #182e40;
+}
+
+/* Summary */
+
+.shop-bill-summary {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid #d5dfe5;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.shop-bill-summary > div {
+  padding: 12px;
+  border-right: 1px solid #dce5e9;
+}
+
+.shop-bill-summary > div:last-child {
+  border-right: 0;
+}
+
+.shop-bill-summary span {
+  display: block;
+  font-size: 9px;
+  color: #72828c;
+}
+
+.shop-bill-summary strong {
+  display: block;
+  margin-top: 4px;
+  font-size: 17px;
+  color: #142b3d;
+}
+
+.shop-bill-summary .due {
+  background: #fff7f3;
+}
+
+.shop-bill-summary .due strong {
+  color: #e5481b;
+}
+
+.shop-bill-summary .clear {
+  background: #effbf5;
+}
+
+.shop-bill-summary .clear strong {
+  color: #008d4c;
+}
+
+/* Sections */
+
+.shop-bill-section {
+  margin-top: 14px;
+  border: 1px solid #ccd9df;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.shop-section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 11px;
+  background: #f2f6f8;
+  border-bottom: 1px solid #d5dfe4;
+}
+
+.shop-section-title strong {
+  font-size: 13px;
+  color: #163047;
+}
+
+.shop-section-title span {
+  font-size: 9px;
+  color: #71828d;
+}
+
+/* Tables */
+
+.shop-milk-table,
+.shop-payment-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.shop-milk-table th,
+.shop-milk-table td,
+.shop-payment-table th,
+.shop-payment-table td {
+  border-bottom: 1px solid #e0e7eb;
+  padding: 8px 9px;
+  font-size: 10px;
+  text-align: left;
+}
+
+.shop-milk-table th,
+.shop-payment-table th {
+  background: #f8fafb;
+  color: #596d79;
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.shop-milk-table td:last-child,
+.shop-payment-table td:last-child,
+.shop-milk-table th:last-child,
+.shop-payment-table th:last-child {
+  text-align: right;
+}
+
+.shop-milk-table tfoot td,
+.shop-payment-table tfoot td {
+  background: #f2faf6;
+  font-weight: 800;
+  color: #143047;
+}
+
+.shop-milk-table tfoot td:last-child,
+.shop-payment-table tfoot td:last-child {
+  color: #008d4c;
+  font-size: 11px;
+}
+
+.shop-empty,
+.shop-no-payment {
+  padding: 18px !important;
+  text-align: center !important;
+  color: #7c8c96;
+}
+
+.shop-no-payment {
+  font-size: 11px;
+}
+
+/* Final total */
+
+.shop-total-box {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 2px solid #cdd9df;
+  border-radius: 7px;
+  overflow: hidden;
+}
+
+.shop-total-box > div {
+  padding: 13px;
+  border-right: 1px solid #dce5e9;
+}
+
+.shop-total-box > div:last-child {
+  border-right: 0;
+}
+
+.shop-total-box span {
+  display: block;
+  font-size: 9px;
+  color: #71818c;
+}
+
+.shop-total-box strong {
+  display: block;
+  margin-top: 4px;
+  font-size: 18px;
+  color: #142c3e;
+}
+
+.shop-total-box .due {
+  background: #fff5f1;
+}
+
+.shop-total-box .due strong {
+  color: #df451a;
+}
+
+.shop-total-box .clear {
+  background: #effbf5;
+}
+
+.shop-total-box .clear strong {
+  color: #008d4c;
+}
+
+.shop-advance {
+  margin-top: 10px;
+  padding: 8px 10px;
+  border: 1px solid #bce7d0;
+  background: #f1fbf6;
+  border-radius: 5px;
+  font-size: 10px;
+}
+
+.shop-advance strong {
+  color: #008d4c;
+}
+
+/* Footer */
+
+.shop-bill-footer {
+  margin-top: 18px;
+  padding-top: 10px;
+  border-top: 1px solid #d7e0e5;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.shop-bill-footer strong {
+  display: block;
+  font-size: 10px;
+  color: #173047;
+}
+
+.shop-bill-footer span {
+  display: block;
+  margin-top: 3px;
+  font-size: 8px;
+  color: #7b8b95;
+}
+
+.shop-bill-footer > div:last-child {
+  text-align: right;
+}
+
+.shop-thanks {
+  margin-top: 9px;
+  padding: 7px;
+  text-align: center;
+  background: #f1faf6;
+  color: #008d4c;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+/* Loading / Error */
+
+.bill-loading,
+.bill-error {
+  width: min(500px, 100%);
+  margin: 80px auto;
+  padding: 35px;
+  background: #fff;
+  border: 1px solid #dbe4e9;
+  border-radius: 12px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.bill-loading-icon,
+.bill-error-icon {
+  font-size: 40px;
+}
+
+.bill-loading h2,
+.bill-error h2 {
+  margin: 14px 0 5px;
+  color: #183148;
+}
+
+.bill-loading p,
+.bill-error p {
+  color: #71838e;
+}
+
+.bill-spinner {
+  width: 32px;
+  height: 32px;
+  margin: 15px auto;
+  border: 3px solid #d6f3e4;
+  border-top-color: #009b52;
+  border-radius: 50%;
+  animation: bill-spin 0.8s linear infinite;
+}
+
+@keyframes bill-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.bill-error-actions {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.bill-error-actions button {
+  min-height: 40px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 7px;
+  background: #009b52;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.bill-error-actions .bill-secondary-btn {
+  background: #edf2f5;
+  color: #294354;
+}
+
+/* Tablet */
+
+@media (max-width: 900px) {
+  .customer-bill-page {
+    padding: 16px;
+  }
+
+  .customer-bill-paper {
+    padding: 20px;
+  }
+
+  .shop-customer-strip {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .shop-customer-strip > div:nth-child(3n) {
+    border-right: 0;
+  }
+
+  .shop-bill-summary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+  .customer-bill-page {
+    padding: 10px;
+  }
+
+  .bill-action-bar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .bill-action-right {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .bill-month-btn,
+  .bill-ledger-btn,
+  .bill-print-btn,
+  .bill-back-btn {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .customer-bill-paper {
+    padding: 13px;
+  }
+
+  .shop-bill-header {
+    align-items: flex-start;
+  }
+
+  .shop-bill-header h1 {
+    font-size: 19px;
+  }
+
+  .shop-bill-title strong {
+    font-size: 14px;
+  }
+
+  .shop-bill-title span {
+    font-size: 8px;
+  }
+
+  .shop-customer-strip {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .shop-customer-strip > div {
+    border-right: 1px solid #dce5e9;
+  }
+
+  .shop-customer-strip > div:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .shop-bill-summary {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .shop-bill-summary > div:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .shop-bill-summary strong {
+    font-size: 14px;
+  }
+
+  .shop-section-title strong {
+    font-size: 11px;
+  }
+
+  .shop-milk-table {
+    min-width: 620px;
+  }
+
+  .shop-bill-section {
+    overflow-x: auto;
+  }
+
+  .shop-total-box {
+    grid-template-columns: 1fr;
+  }
+
+  .shop-total-box > div {
+    border-right: 0;
+    border-bottom: 1px solid #dce5e9;
+  }
+
+  .shop-total-box > div:last-child {
+    border-bottom: 0;
+  }
+
+  .shop-bill-footer {
+    font-size: 8px;
+  }
+}
+
+/* =========================================================
+   PRINT — REAL A4 SHOP BILL
+   IMPORTANT:
+   MainLayout / Sidebar / parent widths are completely ignored.
+   Bill is forced to the printable A4 content width.
+========================================================= */
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 8mm;
+  }
+
+  html {
+    width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+  }
+
+  body {
+    width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+    overflow: visible !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Hide the complete application first */
+  body * {
+    visibility: hidden !important;
+  }
+
+  /* Show ONLY the bill */
+  body.customer-bill-print-mode .customer-bill-page,
+  body.customer-bill-print-mode .customer-bill-page * {
+    visibility: visible !important;
+  }
+
+  /* Remove dashboard controls */
+  .no-print,
+  .bill-action-bar,
+  .bill-loading,
+  .bill-error {
+    display: none !important;
+  }
+
+  /*
+    Escape common dashboard/container constraints.
+    The bill gets a real physical A4 printable width.
+  */
+  #root {
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
+    overflow: visible !important;
+  }
+
+  .customer-bill-page {
+    position: static !important;
+    width: 190mm !important;
+    max-width: 190mm !important;
+    min-width: 190mm !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    background: #fff !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
+    transform: none !important;
+    zoom: 1 !important;
+  }
+
+  .customer-bill-paper {
+    width: 190mm !important;
+    max-width: 190mm !important;
+    min-width: 190mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
+    transform: none !important;
+  }
+
+  /* ---------------- HEADER ---------------- */
+
+  .shop-bill-header {
+    width: 190mm !important;
+    box-sizing: border-box !important;
+    padding: 0 0 5mm !important;
+    margin: 0 !important;
+    border-bottom: 0.5mm solid #159b58 !important;
+  }
+
+  .shop-bill-header h1 {
+    font-size: 22pt !important;
+    line-height: 1.05 !important;
+  }
+
+  .shop-bill-header p {
+    font-size: 7pt !important;
+    margin-top: 1.5mm !important;
+  }
+
+  .shop-bill-title strong {
+    font-size: 16pt !important;
+    line-height: 1.1 !important;
+  }
+
+  .shop-bill-title span {
+    font-size: 8pt !important;
+  }
+
+  /* ---------------- CUSTOMER ---------------- */
+
+  .shop-customer-strip {
+    width: 190mm !important;
+    margin-top: 4mm !important;
+    display: grid !important;
+    grid-template-columns: 1.45fr 1fr 1.25fr 0.8fr 0.8fr 1fr !important;
+    border: 0.3mm solid #cbd7dd !important;
+    border-radius: 1.5mm !important;
+    overflow: hidden !important;
+  }
+
+  .shop-customer-strip > div {
+    min-width: 0 !important;
+    padding: 3mm 3.2mm !important;
+    border-right: 0.2mm solid #d8e1e5 !important;
+    box-sizing: border-box !important;
+  }
+
+  .shop-customer-strip > div:last-child {
+    border-right: 0 !important;
+  }
+
+  .shop-customer-strip span {
+    font-size: 6.5pt !important;
+    margin-bottom: 1.2mm !important;
+  }
+
+  .shop-customer-strip strong {
+    font-size: 8pt !important;
+    line-height: 1.2 !important;
+    word-break: break-word !important;
+  }
+
+  /* ---------------- SUMMARY ---------------- */
+
+  .shop-bill-summary {
+    width: 190mm !important;
+    margin-top: 3.5mm !important;
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    border: 0.3mm solid #cbd7dd !important;
+    border-radius: 1.5mm !important;
+  }
+
+  .shop-bill-summary > div {
+    padding: 3.5mm !important;
+  }
+
+  .shop-bill-summary span {
+    font-size: 6.5pt !important;
+  }
+
+  .shop-bill-summary strong {
+    margin-top: 1mm !important;
+    font-size: 13pt !important;
+  }
+
+  /* ---------------- SECTIONS ---------------- */
+
+  .shop-bill-section {
+    width: 190mm !important;
+    margin-top: 3.5mm !important;
+    border: 0.3mm solid #cbd7dd !important;
+    border-radius: 1.5mm !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+  }
+
+  .shop-section-title {
+    padding: 2.5mm 3mm !important;
+    min-height: 8mm !important;
+    box-sizing: border-box !important;
+  }
+
+  .shop-section-title strong {
+    font-size: 8.5pt !important;
+  }
+
+  .shop-section-title span {
+    font-size: 6.5pt !important;
+  }
+
+  /* ---------------- TABLES ---------------- */
+
+  .shop-milk-table,
+  .shop-payment-table {
+    width: 190mm !important;
+    max-width: 190mm !important;
+    min-width: 0 !important;
+    table-layout: fixed !important;
+    border-collapse: collapse !important;
+  }
+
+  .shop-milk-table th,
+  .shop-milk-table td,
+  .shop-payment-table th,
+  .shop-payment-table td {
+    padding: 2.2mm 2.5mm !important;
+    font-size: 7.5pt !important;
+    line-height: 1.2 !important;
+    height: auto !important;
+    box-sizing: border-box !important;
+  }
+
+  .shop-milk-table th,
+  .shop-payment-table th {
+    font-size: 7pt !important;
+    font-weight: 800 !important;
+  }
+
+  .shop-milk-table tfoot td,
+  .shop-payment-table tfoot td {
+    font-size: 7.5pt !important;
+    font-weight: 800 !important;
+  }
+
+  /* ---------------- FINAL TOTAL ---------------- */
+
+  .shop-total-box {
+    width: 190mm !important;
+    margin-top: 3.5mm !important;
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    border: 0.5mm solid #c4d1d8 !important;
+    border-radius: 1.5mm !important;
+  }
+
+  .shop-total-box > div {
+    padding: 3.5mm !important;
+  }
+
+  .shop-total-box span {
+    font-size: 6.5pt !important;
+  }
+
+  .shop-total-box strong {
+    margin-top: 1mm !important;
+    font-size: 14pt !important;
+  }
+
+  .shop-advance {
+    width: 190mm !important;
+    box-sizing: border-box !important;
+    margin-top: 3mm !important;
+    padding: 2.5mm 3mm !important;
+    font-size: 7.5pt !important;
+  }
+
+  /* ---------------- FOOTER ---------------- */
+
+  .shop-bill-footer {
+    width: 190mm !important;
+    margin-top: 4mm !important;
+    padding-top: 3mm !important;
+    border-top: 0.3mm solid #ccd7dc !important;
+  }
+
+  .shop-bill-footer strong {
+    font-size: 7.5pt !important;
+  }
+
+  .shop-bill-footer span {
+    font-size: 6.5pt !important;
+  }
+
+  .shop-thanks {
+    width: 190mm !important;
+    box-sizing: border-box !important;
+    margin-top: 2.5mm !important;
+    padding: 2mm !important;
+    font-size: 7pt !important;
+  }
+
+  /*
+    Prevent the bill from being split in awkward places.
+  */
+  .shop-bill-header,
+  .shop-customer-strip,
+  .shop-bill-summary,
+  .shop-bill-section,
+  .shop-total-box,
+  .shop-advance,
+  .shop-bill-footer,
+  .shop-thanks {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  /*
+    Mobile/tablet rules must NOT affect print.
+  */
+  .shop-milk-table,
+  .shop-payment-table {
+    overflow: visible !important;
+  }
+}

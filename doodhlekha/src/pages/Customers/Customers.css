@@ -1,0 +1,752 @@
+/* =========================================================
+   1. PREMIUM VARIABLES
+========================================================= */
+:root {
+  --primary: #10b981; /* Premium Emerald Green */
+  --primary-hover: #059669;
+  --primary-light: #ecfdf5;
+  --secondary: #3b82f6; /* Modern Blue */
+
+  --bg-main: #f8fafc;
+  --bg-card: #ffffff;
+
+  --text-dark: #0f172a;
+  --text-main: #334155;
+  --text-muted: #64748b;
+
+  --border-light: #e2e8f0;
+
+  --success: #22c55e;
+  --success-light: #dcfce7;
+  --warning: #f59e0b;
+  --warning-light: #fef3c7;
+  --danger: #ef4444;
+  --danger-light: #fee2e2;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md:
+    0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+  --shadow-lg:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-hover:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+}
+
+/* =========================================================
+   2. MAIN LAYOUT
+========================================================= */
+.customers-page {
+  background-color: var(--bg-main);
+  min-height: 100vh;
+  padding: 1.5rem;
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    sans-serif;
+  color: var(--text-main);
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+/* =========================================================
+   3. HEADER SECTION
+========================================================= */
+.customers-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.customers-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.customers-main-icon {
+  font-size: 2.5rem;
+  background: white;
+  height: 60px;
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-light);
+}
+
+.customers-title h1 {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+.customers-title p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.customers-title span {
+  background: var(--primary-light);
+  color: var(--primary-hover);
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* Add Customer Button */
+.add-customer-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+  color: white;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+  transition: all 0.3s ease;
+}
+
+.add-customer-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
+}
+
+.add-customer-btn span {
+  font-size: 1.2rem;
+}
+.add-customer-btn div {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+.add-customer-btn strong {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+.add-customer-btn small {
+  font-size: 0.7rem;
+  opacity: 0.9;
+}
+
+/* =========================================================
+   4. TOOLBAR (SEARCH & COUNT)
+========================================================= */
+.customers-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  background: var(--bg-card);
+  padding: 1rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 2rem;
+  border: 1px solid var(--border-light);
+  flex-wrap: wrap;
+}
+
+.customer-search {
+  flex: 1;
+  min-width: 250px;
+  display: flex;
+  align-items: center;
+  background: var(--bg-main);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.customer-search:focus-within {
+  border-color: var(--primary);
+  background: white;
+  box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+.customer-search input {
+  border: none;
+  background: transparent;
+  width: 100%;
+  padding: 0 0.75rem;
+  font-size: 0.95rem;
+  outline: none;
+  color: var(--text-dark);
+}
+
+.customer-search button {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.customer-count {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 1rem;
+  background: var(--primary-light);
+  border-radius: var(--radius-md);
+  border: 1px solid #a7f3d0;
+}
+
+.customer-count strong {
+  font-size: 1.5rem;
+  color: var(--primary-hover);
+}
+
+.customer-count div {
+  display: flex;
+  flex-direction: column;
+}
+
+.customer-count span {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--primary-hover);
+}
+.customer-count small {
+  font-size: 0.7rem;
+  color: var(--primary);
+}
+
+/* =========================================================
+   5. GRID & CUSTOMER CARD (PREMIUM 3D)
+========================================================= */
+.customers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.5rem;
+}
+
+.customer-card-3d {
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-light);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.customer-card-3d:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-hover);
+  border-color: #cbd5e1;
+}
+
+/* Card Header */
+.customer-card-top {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.customer-avatar {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--secondary), #60a5fa);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 800;
+  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+}
+
+.customer-main-info {
+  flex: 1;
+}
+
+.customer-name-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.customer-name-row h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.customer-active-badge {
+  font-size: 0.7rem;
+  background: var(--success-light);
+  color: var(--success);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+}
+
+.customer-code {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* Basic Info */
+.customer-info-row {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.customer-info-item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-main);
+  padding: 0.75rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-light);
+}
+
+.customer-info-item div {
+  display: flex;
+  flex-direction: column;
+}
+
+.customer-info-item strong {
+  font-size: 0.85rem;
+  color: var(--text-dark);
+}
+.customer-info-item small {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+/* =========================================================
+   6. TODAY MILK SECTION
+========================================================= */
+.customer-today-milk {
+  background: linear-gradient(to bottom right, #ffffff, #f0fdfa);
+  border: 1px solid #ccfbf1;
+  border-radius: var(--radius-md);
+  padding: 1rem;
+}
+
+.today-milk-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px dashed #99f6e4;
+  padding-bottom: 0.75rem;
+}
+
+.today-milk-header > div {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.today-milk-header strong {
+  font-size: 0.9rem;
+  color: var(--text-dark);
+}
+.today-milk-header small {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  display: block;
+}
+.today-amount {
+  font-size: 1.1rem !important;
+  color: var(--primary) !important;
+  font-weight: 800;
+}
+
+.today-milk-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.today-milk-box {
+  background: white;
+  padding: 0.5rem;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.today-milk-box strong {
+  font-size: 0.95rem;
+  margin: 2px 0;
+  color: var(--text-dark);
+}
+.today-milk-box small {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  line-height: 1.2;
+}
+
+.customer-no-today-milk {
+  text-align: center;
+  padding: 1rem;
+  background: #f8fafc;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+.customer-no-today-milk small {
+  display: block;
+  font-weight: 400;
+  margin-top: 2px;
+}
+
+/* =========================================================
+   7. MONTH SUMMARY & PAYMENTS
+========================================================= */
+.customer-month-summary {
+  display: flex;
+  background: var(--bg-main);
+  border-radius: var(--radius-md);
+  padding: 0.75rem;
+  text-align: center;
+  border: 1px solid var(--border-light);
+}
+
+.customer-month-summary div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.customer-month-summary div:first-child {
+  border-right: 1px solid var(--border-light);
+}
+
+.customer-month-summary strong {
+  font-size: 1.1rem;
+  color: var(--text-dark);
+}
+.customer-month-summary strong small {
+  font-size: 0.8rem;
+  margin-left: 2px;
+}
+.customer-month-summary span {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* Payment Boxes */
+.customer-payment-summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.customer-payment-summary > div {
+  padding: 0.75rem;
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+}
+
+.paid-box {
+  background: var(--success-light);
+  border: 1px solid #bbf7d0;
+}
+.pending-box {
+  background: var(--danger-light);
+  border: 1px solid #fecaca;
+}
+.advance-box {
+  background: #e0f2fe;
+  border: 1px solid #bae6fd;
+}
+.clear-payment-box {
+  background: var(--bg-main);
+  border: 1px solid var(--border-light);
+}
+
+.customer-payment-summary span {
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+.customer-payment-summary strong {
+  font-size: 1.1rem;
+}
+.customer-payment-summary small {
+  font-size: 0.65rem;
+  opacity: 0.8;
+  margin-top: 2px;
+}
+
+.paid-box span,
+.paid-box strong {
+  color: #166534;
+}
+.pending-box span,
+.pending-box strong {
+  color: #991b1b;
+}
+.advance-box span,
+.advance-box strong {
+  color: #075985;
+}
+
+/* Payment Status Banner */
+.customer-payment-status {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border-radius: var(--radius-md);
+}
+
+.customer-payment-status.pending {
+  background: var(--danger-light);
+  color: #991b1b;
+}
+.customer-payment-status.advance {
+  background: #e0f2fe;
+  color: #075985;
+}
+.customer-payment-status.paid {
+  background: var(--success-light);
+  color: #166534;
+}
+
+.customer-payment-status div {
+  display: flex;
+  flex-direction: column;
+}
+.customer-payment-status strong {
+  font-size: 0.85rem;
+}
+.customer-payment-status small {
+  font-size: 0.7rem;
+  opacity: 0.8;
+}
+
+/* =========================================================
+   8. CARD ACTIONS & BUTTONS
+========================================================= */
+.customer-card-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.add-milk-card-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--text-dark);
+  color: white;
+  padding: 0.75rem;
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+  box-shadow: var(--shadow-sm);
+}
+
+.add-milk-card-btn:hover {
+  background: black;
+  transform: translateY(-1px);
+}
+.add-milk-card-btn div {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+.add-milk-card-btn strong {
+  font-size: 0.9rem;
+}
+.add-milk-card-btn small {
+  font-size: 0.65rem;
+  color: #cbd5e1;
+}
+
+.more-customer-btn {
+  background: var(--bg-main);
+  border: 1px solid var(--border-light);
+  color: var(--text-dark);
+  width: 45px;
+  border-radius: var(--radius-md);
+  font-size: 1.25rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.more-customer-btn:hover {
+  background: var(--border-light);
+}
+
+.deactivate-customer-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.5rem;
+  text-decoration: underline;
+  margin-top: -0.5rem;
+  transition: color 0.2s;
+}
+.deactivate-customer-btn:hover {
+  color: var(--danger);
+}
+
+/* =========================================================
+   9. EMPTY & LOADING STATES
+========================================================= */
+.customers-loading,
+.customers-empty {
+  text-align: center;
+  padding: 4rem 1rem;
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  max-width: 500px;
+  margin: 2rem auto;
+}
+
+.customers-loading div,
+.customers-empty div {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  animation: pulse 2s infinite;
+}
+
+.customers-empty h2,
+.customers-loading h3 {
+  color: var(--text-dark);
+  margin-bottom: 0.5rem;
+}
+.customers-empty p {
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.customers-empty button {
+  background: var(--primary);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* =========================================================
+   10. RESPONSIVE QUERIES (TAB & MOBILE)
+========================================================= */
+
+/* Tablet Adjustments */
+@media (max-width: 1024px) {
+  .customers-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .customers-page {
+    padding: 1rem;
+  }
+
+  .customers-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .customers-header > div:last-child {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .add-customer-btn {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .customers-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .customer-search {
+    width: 100%;
+  }
+
+  .customer-count {
+    justify-content: center;
+  }
+
+  .customers-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .customer-today-milk {
+    padding: 0.75rem;
+  }
+
+  .today-milk-box strong {
+    font-size: 0.85rem;
+  }
+}
+
+/* Extra Small Phones */
+@media (max-width: 380px) {
+  .customer-info-row {
+    flex-direction: column;
+  }
+  .add-customer-btn span {
+    display: none;
+  }
+}

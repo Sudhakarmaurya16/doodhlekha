@@ -1,0 +1,659 @@
+/* =========================================================
+   DOODHLEKHA - REGISTER PAGE
+   PREMIUM RESPONSIVE CSS
+========================================================= */
+
+.register-page {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(0, 175, 105, 0.08),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 90% 90%,
+      rgba(50, 180, 255, 0.08),
+      transparent 30%
+    ),
+    #f5faf8;
+  font-family: Inter, "Noto Sans Devanagari", "Segoe UI", Arial, sans-serif;
+}
+
+.auth-container {
+  width: min(1180px, calc(100% - 40px));
+  min-height: 720px;
+  margin: 30px auto;
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  background: #ffffff;
+  border: 1px solid #e4eee9;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow:
+    0 30px 80px rgba(16, 60, 42, 0.12),
+    0 8px 25px rgba(16, 60, 42, 0.05);
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================================================
+   BACKGROUND CIRCLES
+========================================================= */
+
+.auth-bg-circle {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(1px);
+}
+
+.circle-one {
+  width: 280px;
+  height: 280px;
+  background: rgba(0, 175, 105, 0.08);
+  top: -100px;
+  left: -80px;
+}
+
+.circle-two {
+  width: 380px;
+  height: 380px;
+  background: rgba(0, 140, 255, 0.06);
+  right: -160px;
+  bottom: -150px;
+}
+
+/* =========================================================
+   BRAND PANEL
+========================================================= */
+
+.auth-brand-panel {
+  background: linear-gradient(145deg, #007f4f 0%, #00a866 48%, #06b873 100%);
+  color: #ffffff;
+  padding: 42px 42px 30px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-brand-panel::before {
+  content: "";
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.07);
+  top: -170px;
+  right: -150px;
+}
+
+.auth-brand-panel::after {
+  content: "";
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  bottom: -120px;
+  left: -100px;
+}
+
+/* =========================================================
+   BRAND LOGO
+========================================================= */
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  position: relative;
+  z-index: 2;
+}
+
+.brand-logo-icon {
+  width: 55px;
+  height: 55px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  font-size: 29px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.brand-logo h1 {
+  margin: 0;
+  font-size: 24px;
+  letter-spacing: 0.5px;
+  font-weight: 800;
+}
+
+.brand-logo span {
+  display: block;
+  margin-top: 3px;
+  font-size: 12px;
+  opacity: 0.82;
+}
+
+/* =========================================================
+   BRAND CONTENT
+========================================================= */
+
+.brand-content {
+  margin-top: auto;
+  margin-bottom: auto;
+  position: relative;
+  z-index: 2;
+}
+
+.brand-emoji {
+  width: 66px;
+  height: 66px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.14);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34px;
+  margin-bottom: 22px;
+}
+
+.brand-content h2 {
+  font-size: clamp(30px, 3vw, 42px);
+  line-height: 1.25;
+  margin: 0;
+  font-weight: 800;
+}
+
+.brand-content h2 span {
+  color: #eafff4;
+}
+
+.brand-content > p {
+  margin: 16px 0 28px;
+  font-size: 15px;
+  line-height: 1.8;
+  opacity: 0.85;
+}
+
+/* =========================================================
+   FEATURES
+========================================================= */
+
+.feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.feature-item > span {
+  width: 29px;
+  height: 29px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.16);
+  font-size: 14px;
+}
+
+.feature-item strong {
+  display: block;
+  font-size: 14px;
+}
+
+.feature-item small {
+  display: block;
+  margin-top: 2px;
+  font-size: 11px;
+  opacity: 0.72;
+}
+
+.brand-footer {
+  position: relative;
+  z-index: 2;
+  font-size: 11px;
+  opacity: 0.65;
+}
+
+/* =========================================================
+   FORM PANEL
+========================================================= */
+
+.auth-form-panel {
+  background: #ffffff;
+  padding: 42px 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-form-wrapper {
+  width: min(100%, 460px);
+}
+
+/* =========================================================
+   MOBILE BRAND
+========================================================= */
+
+.mobile-brand {
+  display: none;
+}
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.auth-heading {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 24px;
+}
+
+.heading-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 15px;
+  background: #e9f9f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+}
+
+.auth-heading h2 {
+  margin: 0;
+  font-size: 28px;
+  color: #082b42;
+  font-weight: 800;
+}
+
+.auth-heading p {
+  margin: 5px 0 0;
+  color: #7b8b98;
+  font-size: 12px;
+}
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.auth-error {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  padding: 12px 14px;
+  margin-bottom: 18px;
+  border-radius: 12px;
+  background: #fff3f2;
+  border: 1px solid #ffd5d1;
+  color: #c7362f;
+  font-size: 12px;
+}
+
+.auth-error p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  width: 100%;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 7px;
+  color: #18364a;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.form-group label span {
+  color: #e53935;
+}
+
+.input-wrapper {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border: 1px solid #dce7e3;
+  border-radius: 12px;
+  background: #fbfdfc;
+  transition: 0.25s ease;
+  overflow: hidden;
+}
+
+.input-wrapper:focus-within {
+  border-color: #00a866;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(0, 168, 102, 0.08);
+}
+
+.input-icon {
+  width: 48px;
+  display: flex;
+  justify-content: center;
+  font-size: 17px;
+  flex-shrink: 0;
+}
+
+.input-wrapper input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 0 12px 0 0;
+  font-size: 14px;
+  color: #142f40;
+  font-family: inherit;
+}
+
+.input-wrapper input::placeholder {
+  color: #a1adb5;
+}
+
+.password-toggle {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  width: 45px;
+  height: 100%;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+/* =========================================================
+   TERMS
+========================================================= */
+
+.terms-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  cursor: pointer;
+  color: #778995;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.terms-row input {
+  margin-top: 2px;
+  accent-color: #00a866;
+}
+
+.terms-row b {
+  color: #087b50;
+}
+
+/* =========================================================
+   SUBMIT
+========================================================= */
+
+.auth-submit-btn {
+  min-height: 52px;
+  border: none;
+  border-radius: 13px;
+  background: linear-gradient(135deg, #009d60, #00b873);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0, 168, 102, 0.2);
+  transition: 0.25s ease;
+  font-family: inherit;
+}
+
+.auth-submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(0, 168, 102, 0.28);
+}
+
+.auth-submit-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.auth-submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* =========================================================
+   SPINNER
+========================================================= */
+
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: auth-spin 0.7s linear infinite;
+}
+
+@keyframes auth-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 22px 0 13px;
+  color: #9aa8b0;
+  font-size: 11px;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #e8efec;
+}
+
+.auth-divider span {
+  white-space: nowrap;
+}
+
+.login-link {
+  height: 47px;
+  border: 1px solid #cfe8dd;
+  border-radius: 12px;
+  color: #008b58;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 800;
+  transition: 0.25s ease;
+}
+
+.login-link:hover {
+  background: #effaf5;
+  border-color: #00a866;
+}
+
+.login-link span {
+  font-size: 18px;
+}
+
+.secure-note {
+  text-align: center;
+  color: #9aa8b0;
+  font-size: 10px;
+  margin: 17px 0 0;
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 950px) {
+  .auth-container {
+    grid-template-columns: 0.8fr 1.2fr;
+  }
+
+  .auth-brand-panel {
+    padding: 35px 30px;
+  }
+
+  .auth-form-panel {
+    padding: 35px 35px;
+  }
+
+  .brand-content h2 {
+    font-size: 31px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 760px) {
+  .register-page {
+    overflow-y: auto;
+    padding: 15px 0;
+  }
+
+  .auth-container {
+    width: calc(100% - 24px);
+    min-height: auto;
+    margin: 0 auto;
+    display: block;
+    border-radius: 22px;
+  }
+
+  .auth-brand-panel {
+    display: none;
+  }
+
+  .auth-form-panel {
+    padding: 28px 22px 25px;
+  }
+
+  .mobile-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 25px;
+  }
+
+  .mobile-brand-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 13px;
+    background: #00a866;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 23px;
+  }
+
+  .mobile-brand strong {
+    display: block;
+    color: #082b42;
+    font-size: 18px;
+  }
+
+  .mobile-brand small {
+    display: block;
+    margin-top: 2px;
+    color: #8997a0;
+    font-size: 10px;
+  }
+
+  .auth-heading {
+    margin-bottom: 20px;
+  }
+
+  .auth-heading h2 {
+    font-size: 24px;
+  }
+
+  .auth-heading p {
+    font-size: 11px;
+  }
+
+  .heading-icon {
+    width: 45px;
+    height: 45px;
+    font-size: 21px;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 400px) {
+  .auth-form-panel {
+    padding: 23px 17px;
+  }
+
+  .auth-heading {
+    gap: 10px;
+  }
+
+  .auth-heading h2 {
+    font-size: 21px;
+  }
+
+  .auth-heading p {
+    font-size: 10px;
+  }
+
+  .form-group label {
+    font-size: 12px;
+  }
+
+  .input-wrapper {
+    height: 47px;
+  }
+
+  .input-wrapper input {
+    font-size: 13px;
+  }
+
+  .auth-submit-btn {
+    font-size: 12px;
+  }
+}

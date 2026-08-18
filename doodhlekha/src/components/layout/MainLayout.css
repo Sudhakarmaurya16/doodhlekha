@@ -1,0 +1,150 @@
+/* =========================================================
+   DOODHLEKHA MAIN LAYOUT
+   ========================================================= */
+
+:root {
+  --sidebar-width: 304px;
+
+  --primary: #00a957;
+
+  --page-bg: #f5f9fc;
+}
+
+/* =========================================================
+   GLOBAL LAYOUT
+   ========================================================= */
+
+.app-layout {
+  min-height: 100vh;
+
+  width: 100%;
+
+  background: var(--page-bg);
+
+  display: flex;
+}
+
+/* =========================================================
+   MAIN WRAPPER
+   ========================================================= */
+
+.main-wrapper {
+  min-width: 0;
+
+  width: calc(100% - var(--sidebar-width));
+
+  margin-left: var(--sidebar-width);
+
+  min-height: 100vh;
+
+  display: flex;
+
+  flex-direction: column;
+}
+
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
+
+.main-content {
+  flex: 1;
+
+  min-width: 0;
+
+  width: 100%;
+
+  padding: 28px 34px 45px;
+
+  background: linear-gradient(180deg, #f7fafc 0%, #f3f8fb 100%);
+
+  overflow-x: hidden;
+}
+
+/* =========================================================
+   PAGE CONTENT WIDTH
+   ========================================================= */
+
+.main-content > * {
+  width: 100%;
+
+  max-width: 1400px;
+
+  margin-left: auto;
+
+  margin-right: auto;
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+  :root {
+    --sidebar-width: 255px;
+  }
+
+  .main-wrapper {
+    width: calc(100% - var(--sidebar-width));
+
+    margin-left: var(--sidebar-width);
+  }
+
+  .main-content {
+    padding: 24px 24px 40px;
+  }
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 900px) {
+  .main-wrapper {
+    width: 100%;
+
+    margin-left: 0;
+  }
+
+  .main-content {
+    padding: 18px 16px 35px;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+  .main-content {
+    padding: 15px 12px 30px;
+  }
+}
+
+/* =========================================================
+   BODY LOCK WHEN SIDEBAR OPEN
+   ========================================================= */
+
+body.sidebar-is-open {
+  overflow: hidden;
+}
+
+/* =========================================================
+   SELECTION
+   ========================================================= */
+
+::selection {
+  background: rgba(0, 169, 87, 0.18);
+
+  color: #123a28;
+}
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid rgba(0, 169, 87, 0.25);
+
+  outline-offset: 2px;
+}

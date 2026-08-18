@@ -1,0 +1,916 @@
+/* =========================================================
+   1. PREMIUM VARIABLES
+========================================================= */
+:root {
+  --primary: #0ea5e9;
+  --primary-hover: #0284c7;
+  --primary-light: #e0f2fe;
+
+  --bg-main: #f8fafc;
+  --bg-card: #ffffff;
+
+  --text-dark: #0f172a;
+  --text-main: #334155;
+  --text-muted: #64748b;
+
+  --border-light: #e2e8f0;
+
+  --success: #10b981;
+  --success-light: #dcfce7;
+  --warning: #f59e0b;
+  --warning-light: #fef3c7;
+  --danger: #ef4444;
+  --orange: #f97316;
+  --orange-light: #ffedd5;
+  --purple-light: #f3e8ff;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md:
+    0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+  --shadow-lg:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-3d:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+}
+
+/* =========================================================
+   2. PAGE BASE & LAYOUT
+========================================================= */
+.sale-milk-page {
+  background-color: var(--bg-main);
+  min-height: 100vh;
+  padding: 1.5rem;
+  font-family: "Inter", system-ui, sans-serif;
+  color: var(--text-main);
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   3. HEADER
+========================================================= */
+.sale-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.sale-page-heading {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.sale-page-icon {
+  font-size: 2.5rem;
+  background: white;
+  width: 65px;
+  height: 65px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-light);
+}
+
+.sale-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--primary);
+  letter-spacing: 1px;
+}
+
+.sale-page-heading h1 {
+  margin: 0.2rem 0;
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sale-page-heading h1 span {
+  background: var(--primary-light);
+  color: var(--primary-hover);
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.sale-page-heading p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.sale-refresh-btn {
+  background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+  transition: all 0.3s ease;
+}
+
+.sale-refresh-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(14, 165, 233, 0.4);
+}
+
+.sale-refresh-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* =========================================================
+   4. ERROR BANNER
+========================================================= */
+.sale-error {
+  background: #fee2e2;
+  border: 1px solid #fecaca;
+  color: #991b1b;
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  animation: slideDown 0.3s ease;
+}
+.sale-error div:first-child {
+  font-size: 1.5rem;
+}
+.sale-error div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.sale-error button {
+  background: #991b1b;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* =========================================================
+   5. TODAY HERO CARD (FIXED OVERFLOW ISSUE)
+========================================================= */
+.sale-today-card {
+  background: linear-gradient(135deg, #f8fafc, #f0fdfa);
+  border: 1px solid #ccfbf1;
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-md);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  overflow: hidden; /* Ensures nothing breaks out of this box */
+}
+
+.sale-today-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-3d);
+}
+
+.sale-today-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px dashed #5eead4;
+  padding-bottom: 1.25rem;
+}
+
+.sale-section-label {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #475569;
+  letter-spacing: 1px;
+  display: block;
+  margin-bottom: 6px;
+}
+.sale-today-header h2 {
+  margin: 0;
+  font-size: 1.6rem;
+  color: var(--text-dark);
+  font-weight: 800;
+}
+.sale-today-header p {
+  margin: 4px 0 0 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.sale-date-chip {
+  background: white;
+  padding: 0.6rem 1.25rem;
+  border-radius: 30px;
+  font-weight: 700;
+  color: var(--success);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+}
+
+/* FIX: Auto-fit grid prevents cards from breaking out of the page */
+.sale-today-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  align-items: stretch;
+}
+
+/* FIX: Optimized padding and gap to fit better on standard laptops */
+.sale-today-stat {
+  background: white;
+  padding: 1rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border: 1px solid var(--border-light);
+  transition: transform 0.2s;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.sale-today-stat:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.sale-stat-icon {
+  font-size: 1.8rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.sale-today-stat div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  flex: 1;
+  overflow: hidden; /* Prevents text overflow */
+}
+
+.sale-today-stat small {
+  font-size: 0.85rem;
+  font-weight: 800;
+  white-space: normal; /* Allows wrapping if extremely squished, but sizing prevents it mostly */
+  line-height: 1.2;
+}
+
+.sale-today-stat strong {
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin: 4px 0;
+  line-height: 1;
+}
+
+.sale-today-stat span {
+  font-size: 0.7rem;
+  font-weight: 600;
+  opacity: 0.8;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.sale-today-stat.green .sale-stat-icon {
+  background: #dcfce7;
+}
+.sale-today-stat.green small,
+.sale-today-stat.green strong {
+  color: #047857;
+}
+
+.sale-today-stat.blue .sale-stat-icon {
+  background: #dbeafe;
+}
+.sale-today-stat.blue small,
+.sale-today-stat.blue strong {
+  color: #1d4ed8;
+}
+
+.sale-today-stat.yellow .sale-stat-icon {
+  background: #fef3c7;
+}
+.sale-today-stat.yellow small,
+.sale-today-stat.yellow strong {
+  color: #b45309;
+}
+
+.sale-today-stat.orange .sale-stat-icon {
+  background: #ffedd5;
+}
+.sale-today-stat.orange small,
+.sale-today-stat.orange strong {
+  color: #c2410c;
+}
+
+/* FIX: Auto-fit for session rows to prevent overflow */
+.sale-session-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0;
+  background: white;
+  padding: 0.5rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-light);
+}
+
+.sale-session-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 1rem 1.5rem;
+}
+
+/* Vertical borders for desktop, handled cleanly if wrapped */
+@media (min-width: 768px) {
+  .sale-session-box:not(:last-child) {
+    border-right: 1px dashed var(--border-light);
+  }
+}
+
+.sale-session-box span {
+  font-size: 0.9rem;
+  color: var(--text-main);
+  font-weight: 700;
+}
+.sale-session-box strong {
+  font-size: 1.4rem;
+  color: var(--text-dark);
+  font-weight: 800;
+  margin: 6px 0;
+}
+.sale-session-box small {
+  font-size: 0.8rem;
+  color: var(--success);
+  font-weight: 700;
+}
+
+/* =========================================================
+   6. FORMULA CARD
+========================================================= */
+.sale-formula-card {
+  background: linear-gradient(to right, #f8fafc, #f1f5f9);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.formula-heading {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+.formula-icon {
+  font-size: 1.8rem;
+  background: white;
+  padding: 0.5rem;
+  border-radius: 50%;
+  box-shadow: var(--shadow-sm);
+}
+.formula-heading h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: var(--text-dark);
+}
+.formula-heading p {
+  margin: 2px 0 0 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.formula-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  background: white;
+  padding: 1.25rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-light);
+}
+
+.formula-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-md);
+  min-width: 120px;
+}
+.formula-item span {
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.formula-item strong {
+  font-size: 1.3rem;
+}
+.formula-item small {
+  font-size: 0.7rem;
+  margin-top: 4px;
+  opacity: 0.8;
+}
+
+.formula-item.production {
+  background: #dcfce7;
+  color: #166534;
+}
+.formula-item.customer {
+  background: #dbeafe;
+  color: #1e3a8a;
+}
+.formula-item.remaining {
+  background: #ffedd5;
+  color: #9a3412;
+}
+
+.formula-symbol {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #94a3b8;
+}
+
+/* =========================================================
+   7. REPORT SUMMARY (FIXED GRID)
+========================================================= */
+.sale-summary-section {
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-light);
+}
+
+.sale-section-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.sale-section-title-row span {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--text-muted);
+}
+.sale-section-title-row h2 {
+  margin: 0.25rem 0 0 0;
+  font-size: 1.4rem;
+  color: var(--text-dark);
+}
+.sale-period {
+  background: var(--bg-main);
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--primary-hover);
+}
+
+/* FIX: Auto-fit grid to prevent breakout */
+.sale-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.summary-card {
+  background: var(--bg-main);
+  padding: 1.25rem;
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border-light);
+  border-top: 4px solid;
+  transition: transform 0.2s;
+}
+.summary-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+.summary-card div {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+.summary-card span {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+.summary-card strong {
+  font-size: 1.35rem;
+  color: var(--text-dark);
+  font-weight: 800;
+  margin: 2px 0;
+}
+.summary-card small {
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+.summary-card.green {
+  border-top-color: var(--success);
+}
+.summary-card.blue {
+  border-top-color: var(--secondary);
+}
+.summary-card.yellow {
+  border-top-color: var(--warning);
+}
+.summary-card.orange {
+  border-top-color: var(--orange);
+}
+
+/* =========================================================
+   8. HISTORY & FILTERS
+========================================================= */
+.sale-history-card,
+.daily-sale-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-light);
+}
+
+.sale-history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 1rem;
+}
+.sale-history-header h2 {
+  margin: 0.25rem 0 0 0;
+  font-size: 1.35rem;
+  color: var(--text-dark);
+}
+.sale-history-header p {
+  margin: 2px 0 0 0;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.sale-filter-buttons {
+  display: flex;
+  background: var(--bg-main);
+  padding: 4px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-light);
+}
+.sale-filter-buttons button {
+  background: transparent;
+  border: none;
+  padding: 0.6rem 1.25rem;
+  border-radius: 8px;
+  font-weight: 600;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: 0.2s;
+}
+.sale-filter-buttons button.active {
+  background: white;
+  color: var(--primary-hover);
+  box-shadow: var(--shadow-sm);
+}
+
+.sale-custom-date {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  background: var(--bg-main);
+  padding: 1rem;
+  border-radius: var(--radius-md);
+}
+.sale-custom-date div {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.sale-custom-date label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+.sale-custom-date input {
+  padding: 0.6rem;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  outline: none;
+  font-family: inherit;
+  width: 100%;
+  box-sizing: border-box;
+}
+.sale-custom-date input:focus {
+  border-color: var(--primary);
+}
+.sale-custom-date span {
+  font-size: 1.5rem;
+  color: var(--text-muted);
+  margin-top: 15px;
+}
+
+/* =========================================================
+   9. TABLES
+========================================================= */
+.sale-table-wrap {
+  overflow-x: auto;
+}
+.sale-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+.sale-table th {
+  background: var(--bg-main);
+  padding: 1rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  border-bottom: 2px solid var(--border-light);
+  white-space: nowrap;
+}
+.sale-table th small {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+.sale-table td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text-main);
+  font-size: 0.95rem;
+  vertical-align: middle;
+}
+.sale-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+.sale-customer {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.sale-avatar {
+  width: 35px;
+  height: 35px;
+  background: var(--secondary);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+.sale-customer div {
+  display: flex;
+  flex-direction: column;
+}
+.sale-customer strong {
+  color: var(--text-dark);
+  white-space: nowrap;
+}
+.sale-customer small {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.milk-pill {
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+.milk-pill.morning {
+  background: #fef3c7;
+  color: #92400e;
+  border: 1px solid #fde68a;
+}
+.milk-pill.evening {
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+}
+
+.total-milk-text {
+  color: var(--primary-hover);
+  font-size: 1.05rem;
+}
+.sale-amount {
+  color: var(--text-dark);
+  font-size: 1.05rem;
+}
+
+.daily-count {
+  background: var(--primary-light);
+  color: var(--primary-hover);
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+.customer-milk-text {
+  color: var(--secondary);
+  font-weight: 700;
+}
+.remaining-milk-text {
+  color: var(--orange);
+  font-weight: 700;
+}
+
+.distribution-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 120px;
+}
+.distribution-bar {
+  width: 100%;
+  height: 6px;
+  background: var(--border-light);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.distribution-bar span {
+  display: block;
+  height: 100%;
+  background: var(--success);
+  border-radius: 10px;
+}
+.distribution-cell small {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-align: right;
+}
+
+/* =========================================================
+   10. STATES
+========================================================= */
+.sale-loading-box,
+.sale-empty,
+.daily-empty {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: var(--bg-main);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.sale-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--border-light);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+.sale-empty-icon {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+.sale-empty h3 {
+  color: var(--text-dark);
+  margin: 0 0 0.5rem 0;
+}
+.sale-empty p {
+  color: var(--text-muted);
+  margin: 0;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================================
+   11. MOBILE RESPONSIVENESS
+========================================================= */
+
+@media (max-width: 768px) {
+  .sale-milk-page {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .sale-page-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .sale-refresh-btn {
+    width: 100%;
+  }
+
+  .sale-today-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .sale-session-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 0;
+  }
+  .sale-session-box {
+    padding: 1rem;
+    border-bottom: 1px dashed var(--border-light);
+  }
+  .sale-session-box:last-child {
+    border-bottom: none;
+  }
+
+  .formula-row {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .formula-symbol {
+    transform: rotate(90deg);
+    margin: -0.5rem 0;
+  }
+
+  .sale-history-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .sale-filter-buttons {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .sale-custom-date {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+  .sale-custom-date span {
+    display: none;
+  }
+}
