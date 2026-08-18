@@ -140,6 +140,11 @@ const CustomerPayment = () => {
     try {
       const response = await api.get(
         `/customer-milk/${selectedCustomerId}/monthly-summary`,
+        {
+          params: {
+            month: selectedMonth,
+          },
+        },
       );
 
       setSummary(response.data?.data || null);
@@ -197,38 +202,28 @@ const CustomerPayment = () => {
 
   const totalAmount = Number(summary?.summary?.totalAmount || 0);
 
-  const summaryPaid = Number(summary?.summary?.totalPaid || 0);
-
-  const summaryPending = Number(summary?.summary?.pendingAmount || 0);
-
   /* =======================================================
      PAYMENT HISTORY TOTAL
   ======================================================= */
 
+  // Payment history is the source of truth.
+  // Cancelled payments are never included.
   const historyPaid = useMemo(() => {
-    return payments.reduce(
-      (total, payment) => total + Number(payment.amount || 0),
-      0,
-    );
+    return payments.reduce((total, payment) => {
+      if (String(payment?.status || "completed") !== "completed") {
+        return total;
+      }
+
+      return total + Number(payment?.amount || 0);
+    }, 0);
   }, [payments]);
 
-  /*
-   * Existing monthly summary is the main source
-   * for paid/pending.
-   *
-   * If summary does not contain payment values,
-   * history total is used as fallback.
-   */
+  const totalPaid = Number(historyPaid.toFixed(2));
 
-  const totalPaid =
-    summary?.summary && summary?.summary?.totalPaid !== undefined
-      ? summaryPaid
-      : historyPaid;
-
-  const pendingAmount =
-    summary?.summary && summary?.summary?.pendingAmount !== undefined
-      ? summaryPending
-      : Math.max(totalAmount - totalPaid, 0);
+  // Positive = pending, negative = advance/credit.
+  const balance = Number((totalAmount - totalPaid).toFixed(2));
+  const pendingAmount = Math.max(balance, 0);
+  const advanceAmount = Math.max(-balance, 0);
 
   /* =======================================================
      FORM CHANGE
@@ -564,11 +559,17 @@ const CustomerPayment = () => {
           </div>
 
           <div>
-            <small>बाकी पैसा</small>
+            <small>
+              {advanceAmount > 0 ? "Advance / Credit" : "बाकी पैसा"}
+            </small>
 
-            <strong>₹{formatMoney(pendingAmount)}</strong>
+            <strong>
+              ₹{formatMoney(advanceAmount > 0 ? advanceAmount : pendingAmount)}
+            </strong>
 
-            <span>Pending Amount</span>
+            <span>
+              {advanceAmount > 0 ? "Advance Amount" : "Pending Amount"}
+            </span>
           </div>
         </div>
 
